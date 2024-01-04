@@ -7,6 +7,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.mobiledevandroide.utils.Direction
@@ -28,7 +29,7 @@ fun BottomBar(
                     navController.navigate(Direction.Home.route)
                 }
             },
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f).testTag("Home")
         ) {
             Icon(Direction.Home.icon, contentDescription = null)
         }
@@ -37,7 +38,7 @@ fun BottomBar(
             onClick = {
                       navController.navigate(Direction.About.route)
             },
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f).testTag("About")
         ) {
             Icon(Direction.About.icon, contentDescription = null)
         }
@@ -48,7 +49,7 @@ fun BottomBar(
                     navController.navigate(Direction.Login.route)
                 }
             },
-            modifier = Modifier.weight(1f)
+            modifier = Modifier.weight(1f).testTag("Logout")
         ) {
             Icon(Direction.Logout.icon, contentDescription = null)
         }
