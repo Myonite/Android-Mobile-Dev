@@ -39,7 +39,7 @@ fun LazyListColumn(
                 }
 
                 if (index == lazyPagingItems.itemCount - 1) {
-                    receiptViewModel.getReceipts(index)
+                    receiptViewModel.getReceipts()
                 }
             }
         }

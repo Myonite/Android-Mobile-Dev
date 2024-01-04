@@ -53,7 +53,7 @@ class ReceiptViewModel(application: Application) : AndroidViewModel(application)
         _refreshTrigger.value = Unit
     }
 
-    fun getReceipts(index: Int) {
+    fun getReceipts() {
         if (!isRefreshing) {
             viewModelScope.launch {
                 try {

@@ -26,11 +26,6 @@ class JwtManager private constructor(private val sharedPreferencesManager: Share
         }
     }
 
-    fun getUserId(): Int? {
-        val jwtToken = getJwtToken()
-        val payloadMap = decodeJwtPayload(jwtToken)
-        return payloadMap["exp"]?.toIntOrNull()
-    }
 
     companion object {
         @Volatile

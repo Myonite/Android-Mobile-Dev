@@ -30,6 +30,8 @@ class ApplicatieTest {
         rule.onNodeWithTag("Username").performTextInput("admin")
         rule.onNodeWithTag("Password").performTextInput("admin")
         rule.onNodeWithText("Login").performClick()
+        rule.waitUntil()
+        rule.waitUntil { rule.onNodeWithText("HomeAdministration").assertExists() }
 
 
     }

@@ -64,7 +64,6 @@ fun DateField(
     )
     ReadonlyTextField(
         value = TextFieldValue(mSelectedDate.value),
-        onValueChange = {},
         label = { Text("Select Date") },
         modifier = Modifier
             .clickable {

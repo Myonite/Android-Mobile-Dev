@@ -8,12 +8,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.mobiledevandroide.store.SharedPreferencesManager
 import com.example.mobiledevandroide.network.NetworkClient.apiService
+import com.example.mobiledevandroide.store.JwtManager
 import com.example.mobiledevandroide.utils.showToast
 import kotlinx.coroutines.launch
 
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val sharedPreferencesManager = SharedPreferencesManager.getInstance(application)
+    private val jwtManager = JwtManager.getInstance(SharedPreferencesManager.getInstance(application))
 
     private val _loginResult = MutableLiveData<LoginResult>()
 
@@ -44,7 +45,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     private fun setJwtToken(jwtToken: String) {
-        sharedPreferencesManager.saveString("jwt_token", jwtToken)
+        jwtManager.saveJwtToken(jwtToken)
     }
 }
 
