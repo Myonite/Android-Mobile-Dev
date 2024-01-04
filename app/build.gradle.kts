@@ -4,10 +4,13 @@ plugins {
     kotlin("plugin.serialization") version "1.5.31"
 }
 
+repositories {
+    google()
+    mavenCentral()
+}
 android {
     namespace = "com.example.mobiledevandroide"
     compileSdk = 34
-
     defaultConfig {
         applicationId = "com.example.mobiledevandroide"
         minSdk = 32
@@ -45,7 +48,7 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
         }
     }
     buildToolsVersion = "34.0.0"
@@ -82,8 +85,13 @@ dependencies {
     implementation("androidx.datastore:datastore-core:1.0.0")
     implementation("com.android.volley:volley:1.2.1")
     implementation("androidx.documentfile:documentfile:1.0.1")
+    implementation("androidx.navigation:navigation-testing:2.7.6")
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.junit.jupiter:junit-jupiter:5.8.1")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:5.2.1")
+    testImplementation("org.robolectric:robolectric:4.11.1")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
+    androidTestImplementation("org.mockito:mockito-android:2.24.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.08.00"))
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")

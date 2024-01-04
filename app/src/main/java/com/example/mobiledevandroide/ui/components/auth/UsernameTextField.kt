@@ -1,4 +1,4 @@
-package com.example.mobiledevandroide.ui.components.autth
+package com.example.mobiledevandroide.ui.components.auth
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -7,19 +7,16 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun PasswordTextField(password: String, onValueChange: (String) -> Unit) {
+fun UsernameTextField(username: String, onValueChange: (String) -> Unit) {
     OutlinedTextField(
-        value = password,
+        value = username,
         onValueChange = onValueChange,
-        label = { Text("Wachtwoord") },
-        visualTransformation = PasswordVisualTransformation(),
+        label = { Text("Gebruikersnaam") },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 16.dp)
-            .testTag("Password"),
+            .padding(bottom = 16.dp).testTag("Username"),
     )
 }

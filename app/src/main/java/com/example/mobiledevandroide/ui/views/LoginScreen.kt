@@ -18,9 +18,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.mobiledevandroide.utils.Direction
-import com.example.mobiledevandroide.ui.components.autth.LoginButton
-import com.example.mobiledevandroide.ui.components.autth.PasswordTextField
-import com.example.mobiledevandroide.ui.components.autth.UsernameTextField
+import com.example.mobiledevandroide.ui.components.auth.LoginButton
+import com.example.mobiledevandroide.ui.components.auth.PasswordTextField
+import com.example.mobiledevandroide.ui.components.auth.UsernameTextField
 import com.example.mobiledevandroide.viewModels.LoginResult
 import com.example.mobiledevandroide.viewModels.LoginViewModel
 

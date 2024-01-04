@@ -10,6 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.navigation.NavController
 import com.example.mobiledevandroide.utils.Direction
 
@@ -28,11 +30,14 @@ fun TopBar(navController: NavController) {
         },
         navigationIcon = {
             previousBackStackEntry?.destination?.takeIf { it.route != Direction.Login.route }?.let {
-                IconButton(onClick = { navController.navigateUp() }) {
+                IconButton(
+                    onClick = { navController.navigateUp() },
+                    Modifier.testTag("BackButton")
+                ) {
                     Icon(Icons.Default.ArrowBack, contentDescription = "Back")
                 }
             }
         },
 
-    )
+        )
 }
