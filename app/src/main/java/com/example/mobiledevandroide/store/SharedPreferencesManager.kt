@@ -8,22 +8,30 @@ class SharedPreferencesManager private constructor(context: Context) {
 
     private val sharedPreferences: SharedPreferences = context.getSharedPreferences(
         "Prefs",
-        Context.MODE_PRIVATE,
+        Context.MODE_PRIVATE
     )
 
     fun saveString(key: String, value: String) {
         sharedPreferences.edit().putString(key, value).apply()
-        Log.d("SharedPreferencesManager", "Saved: $key - $value")
+        logSaved(key, value)
     }
 
     fun getString(key: String, defaultValue: String): String {
         val savedValue = sharedPreferences.getString(key, defaultValue) ?: defaultValue
-        Log.d("SharedPreferencesManager", "Retrieved: $key - $savedValue")
+        logRetrieved(key, savedValue)
         return savedValue
     }
 
     fun removeString(key: String) {
         sharedPreferences.edit().remove(key).apply()
+    }
+
+    private fun logSaved(key: String, value: String) {
+        Log.d("SharedPreferencesManager", "Saved: $key - $value")
+    }
+
+    private fun logRetrieved(key: String, value: String) {
+        Log.d("SharedPreferencesManager", "Retrieved: $key - $value")
     }
 
     companion object {
