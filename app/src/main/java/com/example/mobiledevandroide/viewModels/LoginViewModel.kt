@@ -16,7 +16,6 @@ class LoginViewModel(
     application: Application,
     private val apiService: ApiService = NetworkClient.apiService,
     private val jwtManager: JwtManager,
-    private val sharedPreferencesManager: SharedPreferencesManager
 ) : AndroidViewModel(application) {
 
     private val _loginResult = MutableLiveData<LoginResult>()

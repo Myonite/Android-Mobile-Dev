@@ -65,7 +65,7 @@ class LoginViewModelTest {
         jwtManager = mock(JwtManager::class.java)
         sharedPreferencesManager = mock(SharedPreferencesManager::class.java)
 
-        loginViewModel = LoginViewModel(mock(Application::class.java), apiService, jwtManager, sharedPreferencesManager)
+        loginViewModel = LoginViewModel(mock(Application::class.java), apiService, jwtManager)
     }
 
 
