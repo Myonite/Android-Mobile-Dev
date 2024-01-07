@@ -7,8 +7,11 @@ import android.util.Base64
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mobiledevandroide.data.dao.ReceiptDao
+import com.example.mobiledevandroide.data.entity.toReceiptModel
 import com.example.mobiledevandroide.store.SharedPreferencesManager
 import com.example.mobiledevandroide.data.model.ReceiptModel
+import com.example.mobiledevandroide.data.repository.LocalReceiptsRepo
 import com.example.mobiledevandroide.data.repository.ReceiptRepository
 import com.example.mobiledevandroide.network.NetworkClient
 import com.example.mobiledevandroide.utils.showToast
@@ -24,7 +27,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ReceiptDetailViewModel @Inject constructor(
     application: Application,
-    private val sharedPreferencesManager: SharedPreferencesManager
+    private val sharedPreferencesManager: SharedPreferencesManager,
+    private val localReceiptsRepo: LocalReceiptsRepo
 ) : AndroidViewModel(application) {
 
     private val repository: ReceiptRepository = ReceiptRepository(NetworkClient.apiService)
@@ -54,6 +58,12 @@ class ReceiptDetailViewModel @Inject constructor(
                 }
             } catch (e: Exception) {
                 handleException(e)
+                try {
+                    _receiptModelDetail.value =
+                        localReceiptsRepo.getLocalReceipt(receiptId)?.toReceiptModel()
+                } catch (f: Exception) {
+                    handleException(f)
+                }
             }
         }
     }

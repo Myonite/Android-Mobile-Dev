@@ -64,6 +64,7 @@ dependencies {
     implementation ("androidx.activity:activity-ktx:1.8.2")
     implementation ("androidx.fragment:fragment-ktx:1.6.2")
     implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
+    implementation("androidx.room:room-common:2.6.1")
     kapt ("com.google.dagger:hilt-compiler:2.50")
     androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.50")
     kaptAndroidTest ("com.google.dagger:hilt-compiler:2.50")

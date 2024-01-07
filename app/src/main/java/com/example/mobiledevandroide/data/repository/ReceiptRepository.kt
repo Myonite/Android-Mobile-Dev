@@ -13,7 +13,10 @@ import com.example.mobiledevandroide.network.ApiService
 import okhttp3.MultipartBody
 import retrofit2.Response
 
-class ReceiptRepository(private val apiService: ApiService) {
+class ReceiptRepository(
+    private val apiService: ApiService,
+) {
+
     private fun getBearerToken(jwtToken: String): String = "Bearer $jwtToken"
 
     suspend fun getReceipts(jwtToken: String, currentPage: Int): Response<ReceiptsResponse> {
@@ -58,9 +61,13 @@ class ReceiptRepository(private val apiService: ApiService) {
         return apiService.deleteReceipt(getBearerToken(jwtToken), receiptId)
     }
 
-    suspend fun getReceiptImage(jwtToken: String, receiptImageId: Int): Response<ReceiptImageResponse> {
-        return apiService.getReceiptImage(getBearerToken(jwtToken),receiptImageId)
+    suspend fun getReceiptImage(
+        jwtToken: String,
+        receiptImageId: Int
+    ): Response<ReceiptImageResponse> {
+        return apiService.getReceiptImage(getBearerToken(jwtToken), receiptImageId)
     }
+
 
 
 }

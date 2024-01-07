@@ -8,8 +8,10 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.example.mobiledevandroide.data.dao.ReceiptDao
 import com.example.mobiledevandroide.data.model.ProcessRequestModel
 import com.example.mobiledevandroide.data.model.ReceiptModel
+import com.example.mobiledevandroide.data.repository.LocalReceiptsRepo
 import com.example.mobiledevandroide.data.repository.ReceiptRepository
 import com.example.mobiledevandroide.data.source.ReceiptPagingSource
 import com.example.mobiledevandroide.network.NetworkClient
@@ -33,7 +35,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ReceiptViewModel @Inject constructor(
     application: Application,
-    private val sharedPreferencesManager: SharedPreferencesManager
+    private val sharedPreferencesManager: SharedPreferencesManager,
+    private val localReceiptsRepo: LocalReceiptsRepo
 ) : AndroidViewModel(application) {
 
     private val repository: ReceiptRepository = ReceiptRepository(NetworkClient.apiService)
