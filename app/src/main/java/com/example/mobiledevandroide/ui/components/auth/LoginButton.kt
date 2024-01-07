@@ -1,4 +1,4 @@
-package com.example.mobiledevandroide.ui.components.autth
+package com.example.mobiledevandroide.ui.components.auth
 
 import android.util.Log
 import androidx.compose.foundation.layout.fillMaxWidth

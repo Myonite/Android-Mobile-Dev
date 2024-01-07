@@ -20,7 +20,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.mobiledevandroide.shared.enums.RefreshState
@@ -35,7 +35,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun MainScreen(
     navController: NavController,
-    receiptViewModel: ReceiptViewModel = viewModel(),
+    receiptViewModel: ReceiptViewModel = hiltViewModel(),
     navigateTo: (route: String) -> Unit,
 ) {
     val lazyPagingItems = receiptViewModel.receipts.collectAsLazyPagingItems()

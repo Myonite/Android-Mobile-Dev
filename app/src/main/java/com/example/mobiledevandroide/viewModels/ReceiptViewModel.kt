@@ -8,18 +8,18 @@ import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.example.mobiledevandroide.store.JwtManager
-import com.example.mobiledevandroide.store.SharedPreferencesManager
 import com.example.mobiledevandroide.data.model.ProcessRequestModel
 import com.example.mobiledevandroide.data.model.ReceiptModel
-import com.example.mobiledevandroide.data.source.ReceiptPagingSource
 import com.example.mobiledevandroide.data.repository.ReceiptRepository
+import com.example.mobiledevandroide.data.source.ReceiptPagingSource
 import com.example.mobiledevandroide.network.NetworkClient
 import com.example.mobiledevandroide.shared.enums.RefreshState
-import com.example.mobiledevandroide.utils.getFileFromUri
-import com.example.mobiledevandroide.utils.showToast
+import com.example.mobiledevandroide.store.SharedPreferencesManager
 import com.example.mobiledevandroide.utils.getCurrentDatabaseDateString
+import com.example.mobiledevandroide.utils.getFileFromUri
 import com.example.mobiledevandroide.utils.isValidDate
+import com.example.mobiledevandroide.utils.showToast
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.firstOrNull
@@ -28,17 +28,20 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import javax.inject.Inject
 
-class ReceiptViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class ReceiptViewModel @Inject constructor(
+    application: Application,
+    private val sharedPreferencesManager: SharedPreferencesManager
+) : AndroidViewModel(application) {
 
     private val repository: ReceiptRepository = ReceiptRepository(NetworkClient.apiService)
-    private val jwtManager =
-        JwtManager.getInstance(SharedPreferencesManager.getInstance(application))
 
     private var isRefreshing = false
 
     private val jwtToken: String
-        get() = jwtManager.getJwtToken()
+        get() = sharedPreferencesManager.getJwtToken()
 
     val refreshState = mutableStateOf(RefreshState.INITIAL)
     private val _refreshTrigger = MutableStateFlow(Unit)

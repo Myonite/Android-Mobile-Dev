@@ -1,52 +1,48 @@
 package com.example.mobiledevandroide.viewModels
 
-import android.app.Application
 import android.util.Log
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mobiledevandroide.network.ApiService
+import com.example.mobiledevandroide.network.NetworkClient
 import com.example.mobiledevandroide.store.SharedPreferencesManager
-import com.example.mobiledevandroide.network.NetworkClient.apiService
-import com.example.mobiledevandroide.store.JwtManager
-import com.example.mobiledevandroide.utils.showToast
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class LoginViewModel(application: Application) : AndroidViewModel(application) {
+@HiltViewModel
+class LoginViewModel @Inject constructor(
+    private val sharedPreferencesManager: SharedPreferencesManager
+) : ViewModel() {
 
-    private val jwtManager = JwtManager.getInstance(SharedPreferencesManager.getInstance(application))
-
+    private val apiService: ApiService = NetworkClient.apiService
     private val _loginResult = MutableLiveData<LoginResult>()
 
     val loginResult: LiveData<LoginResult> get() = _loginResult
 
-    fun login(username: String, password: String) {
-        val context = getApplication<Application>().applicationContext
+    fun login(username: String, password: String, snackbarCallback: (String) -> Unit) {
         viewModelScope.launch {
             try {
                 val response = apiService.login(username, password)
                 if (response.isSuccessful) {
-                    showToast(context, "Login Succesful")
+                    snackbarCallback("Login Successful")
                     _loginResult.value = LoginResult.Success("Success")
                 } else {
-                    showToast(context, "Login Unsuccesful, please try again")
+                    snackbarCallback("Login Unsuccessful, please try again")
                     _loginResult.value = LoginResult.Error("Error")
                 }
 
-
-                response.body()?.let { setJwtToken(it.data) }
+                response.body()?.let { sharedPreferencesManager.saveJwtToken(it.data) }
 
             } catch (e: Exception) {
                 Log.e("LoginViewModel", "Error logging in: $e")
                 _loginResult.value = LoginResult.Error("Error")
             }
         }
-
     }
 
-    private fun setJwtToken(jwtToken: String) {
-        jwtManager.saveJwtToken(jwtToken)
-    }
 }
 
 sealed class LoginResult {

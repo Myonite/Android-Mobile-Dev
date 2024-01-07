@@ -7,29 +7,34 @@ import android.util.Base64
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.mobiledevandroide.store.JwtManager
 import com.example.mobiledevandroide.store.SharedPreferencesManager
 import com.example.mobiledevandroide.data.model.ReceiptModel
 import com.example.mobiledevandroide.data.repository.ReceiptRepository
 import com.example.mobiledevandroide.network.NetworkClient
 import com.example.mobiledevandroide.utils.showToast
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Locale
+import javax.inject.Inject
 
-class ReceiptDetailViewModel(application: Application) : AndroidViewModel(application) {
+
+@HiltViewModel
+class ReceiptDetailViewModel @Inject constructor(
+    application: Application,
+    private val sharedPreferencesManager: SharedPreferencesManager
+) : AndroidViewModel(application) {
 
     private val repository: ReceiptRepository = ReceiptRepository(NetworkClient.apiService)
-    private val jwtManager =
-        JwtManager.getInstance(SharedPreferencesManager.getInstance(application))
+
 
     private val _receiptModelDetail = MutableStateFlow<ReceiptModel?>(null)
     val receiptModelDetail: StateFlow<ReceiptModel?> = _receiptModelDetail
 
     private val jwtToken: String
-        get() = jwtManager.getJwtToken()
+        get() = sharedPreferencesManager.getJwtToken()
 
     fun loadReceiptDetail(receiptId: String) {
         viewModelScope.launch {

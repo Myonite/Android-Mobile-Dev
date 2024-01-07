@@ -1,7 +1,10 @@
 plugins {
-    id("com.android.application")
     id("org.jetbrains.kotlin.android")
+
+    id("com.android.application")
+    id("com.google.dagger.hilt.android")
     kotlin("plugin.serialization") version "1.5.31"
+    id("kotlin-kapt")
 }
 
 android {
@@ -45,13 +48,30 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
+            excludes.add("/META-INF/*")
         }
     }
     buildToolsVersion = "34.0.0"
 }
 
 dependencies {
+    implementation ("com.google.dagger:hilt-android:2.50")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.6")
+
+    implementation ("com.google.dagger:hilt-android:2.50")
+    implementation ("androidx.activity:activity-ktx:1.8.2")
+    implementation ("androidx.activity:activity-ktx:1.8.2")
+    implementation ("androidx.fragment:fragment-ktx:1.6.2")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.1.0")
+    kapt ("com.google.dagger:hilt-compiler:2.50")
+    androidTestImplementation  ("com.google.dagger:hilt-android-testing:2.50")
+    kaptAndroidTest ("com.google.dagger:hilt-compiler:2.50")
+    testImplementation ("com.google.dagger:hilt-android-testing:2.50")
+    kaptTest("com.google.dagger:hilt-compiler:2.50")
+    testImplementation("com.google.dagger:hilt-android-testing:2.50")
+    testAnnotationProcessor("com.google.dagger:hilt-compiler:2.50")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.9.0")
     implementation("androidx.paging:paging-compose:3.2.1")
     implementation("androidx.compose.material:material:1.5.4")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")

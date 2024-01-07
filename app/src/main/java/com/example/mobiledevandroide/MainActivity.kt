@@ -6,20 +6,21 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.mobiledevandroide.store.JwtManager
-import com.example.mobiledevandroide.store.SharedPreferencesManager
 import com.example.mobiledevandroide.ui.theme.MobileDevAndroideTheme
 import com.example.mobiledevandroide.ui.views.AboutScreen
 import com.example.mobiledevandroide.ui.views.LoginScreen
 import com.example.mobiledevandroide.ui.views.MainScreen
 import com.example.mobiledevandroide.utils.Direction
+import com.example.mobiledevandroide.viewModels.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,16 +36,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ReceiptApp() {
+fun ReceiptApp(
+    mainViewModel: MainViewModel = viewModel(),
+) {
     val navController = rememberNavController()
-    val context = LocalContext.current
+
     NavHost(
         navController = navController,
         startDestination =
-        if (JwtManager.getInstance(
-                SharedPreferencesManager
-                    .getInstance(context),
-            ).hasValidJwtToken()
+        if (
+            mainViewModel.checkToken()
         ) {
             Direction.Home.route
         } else {
