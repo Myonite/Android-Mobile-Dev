@@ -14,12 +14,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.mixingstat.R
 import com.example.mixingstat.data.models.Cocktail
@@ -58,7 +57,12 @@ fun SuggestionOfTheDay(cocktail: Cocktail, navigateTo: (route: String) -> Unit) 
                     .padding(start = 16.dp)
                     .align(Alignment.CenterVertically)
             ) {
-                Text(text = cocktail.strDrink, style = MaterialTheme.typography.displaySmall)
+                Text(
+                    text = cocktail.strDrink,
+                    fontSize = 30.sp,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
+                )
                 Text(text = stringResource(R.string.category) + StringUtils.defaultIfNull(cocktail.strCategory))
                 Text(text = stringResource(R.string.alcoholic) + StringUtils.defaultIfNull(cocktail.strAlcoholic))
                 Text(text = stringResource(R.string.glass) + StringUtils.defaultIfNull(cocktail.strGlass))
@@ -67,13 +71,3 @@ fun SuggestionOfTheDay(cocktail: Cocktail, navigateTo: (route: String) -> Unit) 
     }
 }
 
-@Composable
-fun Modifier.scaleToFit(maxSize: Dp): Modifier = this.layout { measurable, constraints ->
-    val placeable = measurable.measure(constraints)
-    val scale = maxSize.toPx() / placeable.width.coerceAtLeast(placeable.height).toFloat()
-    val width = (placeable.width * scale).toInt()
-    val height = (placeable.height * scale).toInt()
-    layout(width, height) {
-        placeable.place(0, 0)
-    }
-}
