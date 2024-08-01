@@ -63,9 +63,21 @@ fun SuggestionOfTheDay(cocktail: Cocktail, navigateTo: (route: String) -> Unit) 
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis
                 )
-                Text(text = stringResource(R.string.category) + StringUtils.defaultIfNull(cocktail.strCategory))
-                Text(text = stringResource(R.string.alcoholic) + StringUtils.defaultIfNull(cocktail.strAlcoholic))
-                Text(text = stringResource(R.string.glass) + StringUtils.defaultIfNull(cocktail.strGlass))
+                Text(
+                    text = stringResource(R.string.category) + ": " + StringUtils.defaultIfNull(
+                        cocktail.strCategory
+                    )
+                )
+                Text(
+                    text = stringResource(R.string.alcoholic) + ": " + StringUtils.defaultIfNull(
+                        cocktail.strAlcoholic
+                    )
+                )
+                Text(
+                    text = stringResource(R.string.glass) + ": " + StringUtils.defaultIfNull(
+                        cocktail.strGlass
+                    )
+                )
             }
         }
     }

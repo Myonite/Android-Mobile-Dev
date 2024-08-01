@@ -5,14 +5,16 @@
     <string name="title_search">Search</string>
     <string name="message_default_if_null">Not found</string>
     <string name="error_cocktail_not_found">Cocktail not found</string>
-    <string name="instructions">"Instructions: "</string>
-    <string name="ingredients">"Ingredients: "</string>
-    <string name="measures">"Measures: "</string>
-    <string name="category">"Category: "</string>
-    <string name="glass">"Glass: "</string>
-    <string name="alcoholic">"Alcoholic: "</string>
+    <string name="instructions">"Instructions"</string>
+    <string name="ingredients">"Ingredients"</string>
+    <string name="measures">"Measures"</string>
+    <string name="category">Category</string>
+    <string name="glass">Glass</string>
+    <string name="alcoholic">Alcoholic</string>
     <string name="title_suggestion_of_the_moment">Suggestion of the moment</string>
     <string name="title_popular_cocktails">Most popular cocktails</string>
     <string name="title_latest_cocktails">Latest cocktails</string>
     <string name="search_lable">Search</string>
+    <string name="measurement_not_found">No measurement</string>
+    <string name="ingredient_not_found">No ingredient</string>
 </resources>

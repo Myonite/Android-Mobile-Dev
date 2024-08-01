@@ -8,7 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.mixingstat.config.Screen
-import com.example.mixingstat.ui.common.CocktailDetailScreen
+import com.example.mixingstat.ui.screen.detail.CocktailDetailScreen
 import com.example.mixingstat.ui.screen.home.HomeScreen
 import com.example.mixingstat.ui.screen.random.RandomDrinkScreen
 import com.example.mixingstat.ui.screen.search.SearchScreen

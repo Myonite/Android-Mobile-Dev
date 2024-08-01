@@ -57,4 +57,25 @@ data class Cocktail(
     val strImageAttribution: String? = null,
     val strCreativeCommonsConfirmed: String? = null,
     val dateModified: String? = null
-)
+
+){
+    fun getIngredientsWithMeasures(cocktail: Cocktail): List<Pair<String?, String?>> {
+        return listOf(
+            Pair(cocktail.strIngredient1, cocktail.strMeasure1),
+            Pair(cocktail.strIngredient2, cocktail.strMeasure2),
+            Pair(cocktail.strIngredient3, cocktail.strMeasure3),
+            Pair(cocktail.strIngredient4, cocktail.strMeasure4),
+            Pair(cocktail.strIngredient5, cocktail.strMeasure5),
+            Pair(cocktail.strIngredient6, cocktail.strMeasure6),
+            Pair(cocktail.strIngredient7, cocktail.strMeasure7),
+            Pair(cocktail.strIngredient8, cocktail.strMeasure8),
+            Pair(cocktail.strIngredient9, cocktail.strMeasure9),
+            Pair(cocktail.strIngredient10, cocktail.strMeasure10),
+            Pair(cocktail.strIngredient11, cocktail.strMeasure11),
+            Pair(cocktail.strIngredient12, cocktail.strMeasure12),
+            Pair(cocktail.strIngredient13, cocktail.strMeasure13),
+            Pair(cocktail.strIngredient14, cocktail.strMeasure14),
+            Pair(cocktail.strIngredient15, cocktail.strMeasure15)
+        )
+    }
+}

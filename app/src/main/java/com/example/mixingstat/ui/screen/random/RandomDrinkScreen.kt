@@ -28,7 +28,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.mixingstat.presentation.viewmodel.random.RandomDrinkViewModel
-import com.example.mixingstat.ui.common.CocktailDetailScreen
+import com.example.mixingstat.ui.screen.detail.CocktailDetailScreen
 import kotlinx.coroutines.delay
 
 @Composable
