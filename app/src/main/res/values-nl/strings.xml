@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MixingStat</string>
+    <string name="title_home">Home</string>
+    <string name="title_random">Verrassing</string>
+    <string name="title_search">Zoeken</string>
+    <string name="message_default_if_null">Niet gevonden</string>
+    <string name="error_cocktail_not_found">Cocktail niet gevonden</string>
+</resources>

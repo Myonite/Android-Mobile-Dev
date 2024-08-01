@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MixingStat</string>
+    <string name="page_1">Page 1</string>
+    <string name="page_2">Page 2</string>
+    <string name="page_3">Page 3</string>
+    <string name="title_home">Home</string>
+    <string name="title_random">Verrassing</string>
+    <string name="title_search">Zoeken</string>
+    <string name="message_default_if_null">Niet gevonden</string>
+    <string name="error_cocktail_not_found">Cocktail niet gevonden</string>
+</resources>
