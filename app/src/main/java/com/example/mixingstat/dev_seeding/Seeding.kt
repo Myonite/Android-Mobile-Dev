@@ -1,6 +1,6 @@
 package com.example.mixingstat.dev_seeding
 
-import com.example.mixingstat.models.Cocktail
+import com.example.mixingstat.data.models.Cocktail
 
 val cokatilList = listOf(
     Cocktail(

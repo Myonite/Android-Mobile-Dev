@@ -1,7 +1,12 @@
-package com.example.mixingstat.models
+package com.example.mixingstat.data.models
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
+
+@Entity(tableName = "cocktail")
 data class Cocktail(
-    val idDrink: String,
+    @PrimaryKey @SerializedName("idDrink")  val idDrink: String,
     val strDrink: String,
     val strDrinkAlternate: String? = null,
     val strTags: String? = null,

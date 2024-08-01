@@ -1,4 +1,4 @@
-package com.example.mixingstat.ui.composables
+package com.example.mixingstat.ui.screen.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -19,7 +19,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.mixingstat.R
-import com.example.mixingstat.models.Cocktail
+import com.example.mixingstat.data.models.Cocktail
 import com.example.mixingstat.utils.StringUtils
 
 

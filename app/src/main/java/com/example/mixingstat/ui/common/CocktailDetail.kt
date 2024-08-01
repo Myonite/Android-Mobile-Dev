@@ -1,4 +1,4 @@
-package com.example.mixingstat.ui.composables
+package com.example.mixingstat.ui.common
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -19,7 +19,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.mixingstat.R
 import com.example.mixingstat.config.Screen
-import com.example.mixingstat.models.Cocktail
+import com.example.mixingstat.data.models.Cocktail
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable

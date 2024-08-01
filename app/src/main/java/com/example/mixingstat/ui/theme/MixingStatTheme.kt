@@ -1,4 +1,4 @@
-package com.example.mixingstat.config
+package com.example.mixingstat.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme

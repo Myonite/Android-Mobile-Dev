@@ -1,7 +1,10 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.jetbrains.kotlin.android)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.hilt)
+    id("kotlin-kapt")
 }
 
 android {
@@ -14,8 +17,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
     }
 
     buildFeatures {
@@ -42,6 +45,13 @@ android {
 
 
 dependencies {
+    ksp(libs.androidx.room.compiler)
+    implementation(libs.hilt.android)
+    implementation(libs.androidx.hilt.navigation.compose)
+    ksp(libs.hilt.compiler)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
     implementation(libs.androidx.material.icons.extended)
     implementation(libs.coil.compose)
     implementation(libs.androidx.core.ktx)

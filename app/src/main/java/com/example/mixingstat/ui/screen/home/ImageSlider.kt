@@ -1,4 +1,4 @@
-package com.example.mixingstat.ui.composables
+package com.example.mixingstat.ui.screen.home
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -18,7 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.mixingstat.models.Cocktail
+import com.example.mixingstat.data.models.Cocktail
 
 @Composable
 fun ImageSlider(cocktails: List<Cocktail>, navigateTo: (route: String) -> Unit, modifier: Modifier = Modifier, text: String? = null) {

@@ -1,4 +1,4 @@
-package com.example.mixingstat.screen
+package com.example.mixingstat.ui.screen.random
 
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -16,6 +16,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -25,14 +26,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
-import com.example.mixingstat.composables.CocktailDetail
-import com.example.mixingstat.dev_seeding.cocktail
-import com.example.mixingstat.getCocktailById
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.mixingstat.presentation.viewmodel.random.RandomDrinkViewModel
+import com.example.mixingstat.ui.common.CocktailDetailScreen
 import kotlinx.coroutines.delay
-import kotlin.random.Random
 
 @Composable
-fun RandomDrinkScreen(navigateTo: (route: String) -> Unit) {
+fun RandomDrinkScreen(
+    navigateTo: (route: String) -> Unit,
+    viewModel: RandomDrinkViewModel = hiltViewModel()
+) {
+    val randomDrinkState by viewModel.randomDrinkState.collectAsState()
+
     val infiniteTransition = rememberInfiniteTransition(label = "random")
     val angle by infiniteTransition.animateFloat(
         initialValue = -10f,
@@ -49,12 +54,12 @@ fun RandomDrinkScreen(navigateTo: (route: String) -> Unit) {
         animationSpec = tween(400), label = "random"
     )
 
-    val selectedCocktail = remember { cocktail[Random.nextInt(cocktail.size)] }
-
-    LaunchedEffect(key1 = true) {
-        delay(1000)
-        targetAlpha = 0f
-        showCocktail = true
+    LaunchedEffect(key1 = randomDrinkState.showCocktail) {
+        if (randomDrinkState.showCocktail) {
+            delay(1000)
+            targetAlpha = 0f
+            showCocktail = true
+        }
     }
 
     Box(
@@ -78,7 +83,9 @@ fun RandomDrinkScreen(navigateTo: (route: String) -> Unit) {
                 )
             }
         } else {
-            getCocktailById(selectedCocktail.idDrink)?.let { CocktailDetail(it, navigateTo) }
+            randomDrinkState.selectedCocktail?.let {
+                CocktailDetailScreen(it.idDrink, navigateTo)
+            }
         }
     }
 }
