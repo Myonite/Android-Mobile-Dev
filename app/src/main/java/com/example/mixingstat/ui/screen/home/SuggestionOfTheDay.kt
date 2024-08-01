@@ -14,8 +14,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.mixingstat.R
@@ -29,7 +32,9 @@ fun SuggestionOfTheDay(cocktail: Cocktail, navigateTo: (route: String) -> Unit) 
         text = stringResource(R.string.title_suggestion_of_the_moment),
         style = MaterialTheme.typography.titleLarge,
         textAlign = TextAlign.Center,
-        modifier = Modifier.fillMaxWidth()
+        modifier = Modifier.fillMaxWidth(),
+        maxLines = 1,
+        overflow = TextOverflow.Ellipsis
     )
     Card(
         modifier = Modifier
@@ -59,5 +64,16 @@ fun SuggestionOfTheDay(cocktail: Cocktail, navigateTo: (route: String) -> Unit) 
                 Text(text = stringResource(R.string.glass) + StringUtils.defaultIfNull(cocktail.strGlass))
             }
         }
+    }
+}
+
+@Composable
+fun Modifier.scaleToFit(maxSize: Dp): Modifier = this.layout { measurable, constraints ->
+    val placeable = measurable.measure(constraints)
+    val scale = maxSize.toPx() / placeable.width.coerceAtLeast(placeable.height).toFloat()
+    val width = (placeable.width * scale).toInt()
+    val height = (placeable.height * scale).toInt()
+    layout(width, height) {
+        placeable.place(0, 0)
     }
 }

@@ -17,7 +17,11 @@ import com.example.mixingstat.ui.screen.search.SearchScreen
 fun NavGraph(navController: NavHostController, paddingValues: PaddingValues) {
     Box(modifier = androidx.compose.ui.Modifier.padding(paddingValues)) {
         NavHost(navController = navController, startDestination = Screen.Home.route) {
-            composable(Screen.Home.route) { HomeScreen { navController.navigate(it) } }
+            composable(Screen.Home.route) {
+                HomeScreen(navigateTo = {
+                    navController.navigate(it)
+                })
+            }
             composable(Screen.Random.route) {
                 RandomDrinkScreen(navigateTo = {
                     navController.navigate(it)
