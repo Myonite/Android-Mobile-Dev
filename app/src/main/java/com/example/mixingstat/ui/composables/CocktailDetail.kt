@@ -1,4 +1,4 @@
-package com.example.mixingstat.composables
+package com.example.mixingstat.ui.composables
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
@@ -14,8 +14,10 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.mixingstat.R
 import com.example.mixingstat.config.Screen
 import com.example.mixingstat.models.Cocktail
 
@@ -35,9 +37,9 @@ fun CocktailDetail(cocktail: Cocktail, navigateTo: (route: String) -> Unit) {
             modifier = Modifier.height(200.dp)
         )
         Spacer(modifier = Modifier.height(16.dp))
-        Text(text = "Instructions: ${cocktail.strInstructions}")
+        Text(text = stringResource(R.string.instructions) + cocktail.strInstructions)
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "Ingredients:")
+        Text(text = stringResource(R.string.ingredients))
         Spacer(modifier = Modifier.height(8.dp))
         val ingredients = listOf(
             cocktail.strIngredient1,
@@ -67,12 +69,12 @@ fun CocktailDetail(cocktail: Cocktail, navigateTo: (route: String) -> Unit) {
             }
         }
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "Measures: ${cocktail.strMeasure1}, ${cocktail.strMeasure2}, ${cocktail.strMeasure3}, ${cocktail.strMeasure4}, ${cocktail.strMeasure5}, ${cocktail.strMeasure6}, ${cocktail.strMeasure7}, ${cocktail.strMeasure8}, ${cocktail.strMeasure9}, ${cocktail.strMeasure10}, ${cocktail.strMeasure11}, ${cocktail.strMeasure12}, ${cocktail.strMeasure13}, ${cocktail.strMeasure14}, ${cocktail.strMeasure15}")
+        Text(text = stringResource(R.string.measures) + "${cocktail.strMeasure1}, ${cocktail.strMeasure2}, ${cocktail.strMeasure3}, ${cocktail.strMeasure4}, ${cocktail.strMeasure5}, ${cocktail.strMeasure6}, ${cocktail.strMeasure7}, ${cocktail.strMeasure8}, ${cocktail.strMeasure9}, ${cocktail.strMeasure10}, ${cocktail.strMeasure11}, ${cocktail.strMeasure12}, ${cocktail.strMeasure13}, ${cocktail.strMeasure14}, ${cocktail.strMeasure15}")
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "Category: ${cocktail.strCategory}")
+        Text(text = stringResource(R.string.category) + cocktail.strCategory)
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "Glass: ${cocktail.strGlass}")
+        Text(text = stringResource(R.string.glass) + cocktail.strGlass)
         Spacer(modifier = Modifier.height(8.dp))
-        Text(text = "Alcoholic: ${cocktail.strAlcoholic}")
+        Text(text = stringResource(R.string.alcoholic) + cocktail.strAlcoholic)
     }
 }

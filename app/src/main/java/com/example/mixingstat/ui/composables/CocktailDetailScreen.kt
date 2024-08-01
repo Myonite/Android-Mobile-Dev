@@ -1,4 +1,4 @@
-package com.example.mixingstat.composables
+package com.example.mixingstat.ui.composables
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -10,7 +10,7 @@ import com.example.mixingstat.R
 import com.example.mixingstat.getCocktailById
 
 @Composable
-fun CocktailScreen(cocktailId: String, navigateTo: (route: String) -> Unit) {
+fun CocktailDetailScreen(cocktailId: String, navigateTo: (route: String) -> Unit) {
     val cocktail = getCocktailById(cocktailId)
     if (cocktail != null) {
         CocktailDetail(cocktail, navigateTo)

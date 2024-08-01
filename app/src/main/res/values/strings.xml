@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">MixingStat</string>
     <string name="title_home">Home</string>
-    <string name="title_random">Verrassing</string>
-    <string name="title_search">Zoeken</string>
-    <string name="message_default_if_null">Niet gevonden</string>
-    <string name="error_cocktail_not_found">Cocktail niet gevonden</string>
+    <string name="title_random">Surprise</string>
+    <string name="title_search">Search</string>
+    <string name="message_default_if_null">Not found</string>
+    <string name="error_cocktail_not_found">Cocktail not found</string>
+    <string name="instructions">"Instructions: "</string>
+    <string name="ingredients">"Ingredients: "</string>
+    <string name="measures">"Measures: "</string>
+    <string name="category">"Category: "</string>
+    <string name="glass">"Glass: "</string>
+    <string name="alcoholic">"Alcoholic: "</string>
+    <string name="title_suggestion_of_the_moment">Suggestion of the moment</string>
+    <string name="title_popular_cocktails">Most popular cocktails</string>
+    <string name="title_latest_cocktails">Latest cocktails</string>
+    <string name="search_lable">Search</string>
 </resources>

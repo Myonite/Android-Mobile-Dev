@@ -1,4 +1,4 @@
-package com.example.mixingstat.screen
+package com.example.mixingstat.ui.screen
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -20,10 +20,12 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.isTraversalGroup
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.traversalIndex
 import androidx.compose.ui.unit.dp
+import com.example.mixingstat.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -49,7 +51,7 @@ fun SearchScreen(searchQuery: String? = null) {
                 active = it
             },
             placeholder = {
-                Text("Search")
+                Text(stringResource(R.string.search_lable))
             },
             leadingIcon = {
                 Icon(imageVector = Icons.Default.Search, contentDescription = null)

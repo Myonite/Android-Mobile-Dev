@@ -27,15 +27,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import com.example.mixingstat.composables.CocktailScreen
+import com.example.mixingstat.ui.composables.CocktailDetailScreen
 import com.example.mixingstat.config.MixingStatTheme
 import com.example.mixingstat.config.Screen
 import com.example.mixingstat.config.botNavScreenList
 import com.example.mixingstat.dev_seeding.cocktail
 import com.example.mixingstat.models.Cocktail
-import com.example.mixingstat.screen.HomeScreen
-import com.example.mixingstat.screen.RandomDrinkScreen
-import com.example.mixingstat.screen.SearchScreen
+import com.example.mixingstat.ui.screen.HomeScreen
+import com.example.mixingstat.ui.screen.RandomDrinkScreen
+import com.example.mixingstat.ui.screen.SearchScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -99,14 +99,17 @@ fun MixingStatApp() {
                     navController = navController, startDestination = Screen.Home.route
                 ) {
                     composable(Screen.Home.route) { HomeScreen { navController.navigate(it) } }
-                    composable(Screen.Random.route) { RandomDrinkScreen { navController.navigate(it) } }
+                    composable(Screen.Random.route) {
+                        RandomDrinkScreen(navigateTo = {
+                            navController.navigate(it)})
+                    }
                     composable(Screen.Search.route) { SearchScreen() }
                     composable("${Screen.Search.route}/{searchQuery}") { backStackEntry ->
                         val searchQuery = backStackEntry.arguments?.getString("searchQuery")
                         SearchScreen(searchQuery)
                     }
                     composable("cocktail/{cocktailId}") { backStackEntry ->
-                        CocktailScreen(backStackEntry.arguments?.getString("cocktailId")!!) { route ->
+                        CocktailDetailScreen(backStackEntry.arguments?.getString("cocktailId")!!) { route ->
                             navController.navigate(route)
                         }
                     }
