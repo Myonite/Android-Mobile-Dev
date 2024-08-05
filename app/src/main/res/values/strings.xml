@@ -17,4 +17,7 @@
     <string name="search_lable">Search</string>
     <string name="measurement_not_found">No measurement</string>
     <string name="ingredient_not_found">No ingredient</string>
+    <string name="ingredient">Ingredient</string>
+    <string name="cocktail">Cocktail</string>
+    <string name="possible_network_error">We are sorry, no cocktails could be found at this moment</string>
 </resources>

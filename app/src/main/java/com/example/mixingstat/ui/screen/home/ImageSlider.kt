@@ -15,43 +15,59 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import com.example.mixingstat.R
 import com.example.mixingstat.data.models.Cocktail
 
 @Composable
-fun ImageSlider(cocktails: List<Cocktail>, navigateTo: (route: String) -> Unit, modifier: Modifier = Modifier, text: String? = null) {
-    Column {
-        text?.let {
-            Text(
-                it,
-                style = MaterialTheme.typography.titleLarge,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth()
-            )
-        }
-        LazyRow(modifier = modifier) {
-            itemsIndexed(cocktails) { _, cocktail ->
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier.clickable {
-                        navigateTo("cocktail/${cocktail.idDrink}")
-                    }
-                ) {
-                    Card(
-                        modifier = Modifier.padding(8.dp),
-                        elevation = CardDefaults.cardElevation(4.dp)
+fun ImageSlider(
+    cocktails: List<Cocktail>,
+    navigateTo: (route: String) -> Unit,
+    modifier: Modifier = Modifier,
+    text: String? = null
+) {
+    if (cocktails.isEmpty()) {
+        Text(
+            stringResource(R.string.possible_network_error),
+            style = MaterialTheme.typography.titleLarge,
+            textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth()
+        )
+    } else {
+        Column {
+            text?.let {
+                Text(
+                    it,
+                    style = MaterialTheme.typography.titleLarge,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier.fillMaxWidth()
+                )
+            }
+            LazyRow(modifier = modifier) {
+                itemsIndexed(cocktails) { _, cocktail ->
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.clickable {
+                            navigateTo("cocktail/${cocktail.idDrink}")
+                        }
                     ) {
-                        Box(
-                            modifier = Modifier
-                                .height(150.dp)
-                                .fillMaxWidth()
+                        Card(
+                            modifier = Modifier.padding(8.dp),
+                            elevation = CardDefaults.cardElevation(4.dp)
                         ) {
-                            AsyncImage(
-                                model = cocktail.strDrinkThumb,
-                                contentDescription = cocktail.strDrink
-                            )
+                            Box(
+                                modifier = Modifier
+                                    .height(150.dp)
+                                    .fillMaxWidth()
+                            ) {
+                                AsyncImage(
+                                    model = cocktail.strDrinkThumb,
+                                    contentDescription = cocktail.strDrink
+                                )
+                            }
                         }
                     }
                 }

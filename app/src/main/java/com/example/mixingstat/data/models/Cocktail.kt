@@ -1,5 +1,6 @@
 package com.example.mixingstat.data.models
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
@@ -56,7 +57,9 @@ data class Cocktail(
     val strImageSource: String? = null,
     val strImageAttribution: String? = null,
     val strCreativeCommonsConfirmed: String? = null,
-    val dateModified: String? = null
+    val dateModified: String? = null,
+    @ColumnInfo(defaultValue = "0") var isPopular: Boolean = false,
+    @ColumnInfo(defaultValue = "0") var isLatest: Boolean = false
 
 ){
     fun getIngredientsWithMeasures(cocktail: Cocktail): List<Pair<String?, String?>> {

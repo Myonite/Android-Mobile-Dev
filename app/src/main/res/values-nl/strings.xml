@@ -16,4 +16,5 @@
     <string name="title_popular_cocktails">Most popular cocktails</string>
     <string name="title_latest_cocktails">Latest cocktails</string>
     <string name="search_lable">Search</string>
+    <string name="possible_network_error">We are sorry, no cocktails could be found at this moment</string>
 </resources>

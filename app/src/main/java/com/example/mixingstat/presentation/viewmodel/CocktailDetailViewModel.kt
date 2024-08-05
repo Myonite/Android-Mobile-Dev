@@ -19,7 +19,7 @@ class CocktailDetailViewModel @Inject constructor(
 
     fun searchById(id: String) {
         viewModelScope.launch {
-            val cocktail = repository.getCocktailFromApi(id)
+            val cocktail = repository.getCocktail(id)
             _state.value = CocktailDetailState(cocktail)
         }
     }

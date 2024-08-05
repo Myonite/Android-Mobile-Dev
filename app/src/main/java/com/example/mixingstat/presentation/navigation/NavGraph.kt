@@ -27,10 +27,17 @@ fun NavGraph(navController: NavHostController, paddingValues: PaddingValues) {
                     navController.navigate(it)
                 })
             }
-            composable(Screen.Search.route) { SearchScreen() }
-            composable("${Screen.Search.route}/{searchQuery}") { backStackEntry ->
+            composable(Screen.Search.route) {
+                SearchScreen(navigateTo = {
+                    navController.navigate(it)
+                })
+            }
+            composable("${Screen.Search.route}/{searchQuery}/{method}") { backStackEntry ->
                 val searchQuery = backStackEntry.arguments?.getString("searchQuery")
-                SearchScreen(searchQuery)
+                val searchMethod = backStackEntry.arguments?.getString("method")
+                SearchScreen(searchQuery, searchMethod, navigateTo = {
+                    navController.navigate(it)
+                })
             }
             composable("cocktail/{cocktailId}") { backStackEntry ->
                 CocktailDetailScreen(

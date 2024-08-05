@@ -2,6 +2,7 @@ package com.example.mixingstat.presentation.viewmodel.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.mixingstat.config.NetworkStatus
 import com.example.mixingstat.data.repository.CocktailRepository
 import com.example.mixingstat.presentation.state.home.HomeScreenState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -19,6 +20,17 @@ class HomeScreenViewModel @Inject constructor(
 
     init {
         loadCocktails()
+        observeNetworkStatus()
+    }
+
+    private fun observeNetworkStatus() {
+        viewModelScope.launch {
+            NetworkStatus.isConnected.collect { isConnected ->
+                if (isConnected) {
+                    loadCocktails()
+                }
+            }
+        }
     }
 
     private fun loadCocktails() {
@@ -26,7 +38,7 @@ class HomeScreenViewModel @Inject constructor(
             _state.value = HomeScreenState(isLoading = true)
             val popularCocktails = repository.getAllPopularCocktails()
             val latestCocktails = repository.getAllLatestCocktails()
-            val suggestionCocktail = repository.getRandomCocktailFromAPi()
+            val suggestionCocktail = repository.getRandomCocktail()
             _state.value =
                 HomeScreenState(popularCocktails, latestCocktails, suggestionCocktail, false)
         }

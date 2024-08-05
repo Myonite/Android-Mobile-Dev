@@ -27,7 +27,7 @@ fun IngredientRow(ingredient: String, measure: String, navigateTo: (route: Strin
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { navigateTo("${Screen.Search.route}/$ingredient") }
+            .clickable { navigateTo("${Screen.Search.route}/$ingredient/ingredient") }
     ) {
         AsyncImage(
             model = "https://www.thecocktaildb.com/images/ingredients/${ingredientEncoded}-Small.png",

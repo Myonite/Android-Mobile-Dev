@@ -1,6 +1,8 @@
 package com.example.mixingstat
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 import androidx.room.Room
 import com.example.mixingstat.data.database.CocktailDatabase
 import com.example.mixingstat.data.network.CocktailApiService
@@ -10,6 +12,7 @@ import com.example.mixingstat.data.repository.CocktailRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -38,5 +41,12 @@ object AppModule {
     @Singleton
     fun provideMyRepository(mydb: CocktailDatabase, apiService: CocktailApiService): CocktailRepository {
         return CocktailRepositoryImpl(mydb.dao, apiService)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager {
+        return context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     }
 }
