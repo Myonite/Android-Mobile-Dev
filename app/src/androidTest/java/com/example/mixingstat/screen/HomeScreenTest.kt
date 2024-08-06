@@ -1,34 +1,39 @@
 package com.example.mixingstat.screen
 
-import androidx.compose.ui.test.junit4.createComposeRule
-import androidx.compose.ui.test.onNodeWithText
-import com.example.mixingstat.data.models.Cocktail
-import com.example.mixingstat.data.repository.CocktailRepository
+import androidx.activity.viewModels
+import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import androidx.compose.ui.test.onNodeWithTag
+import com.example.mixingstat.MainActivity
+import com.example.mixingstat.presentation.viewmodel.home.HomeScreenViewModel
 import com.example.mixingstat.ui.screen.home.HomeScreen
-import com.example.mixingstat.presentation.state.home.HomeScreenState
+import dagger.hilt.android.testing.HiltAndroidRule
+import dagger.hilt.android.testing.HiltAndroidTest
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
-import org.mockito.kotlin.mock
 
-class HomeScreenKtTest {
+@ExperimentalCoroutinesApi
+@HiltAndroidTest
+class HomeScreenTest {
 
-    @get:Rule
-    val rule = createComposeRule()
+    @get:Rule(order = 1)
+    var hiltTestRule = HiltAndroidRule(this)
+
+    @get:Rule(order = 2)
+    var composeTestRule = createAndroidComposeRule<MainActivity>()
+
+    @Before
+    fun setup() {
+        hiltTestRule.inject()
+        composeTestRule.setContent {
+            HomeScreen(navigateTo = {}, viewModel = composeTestRule.activity.viewModels<HomeScreenViewModel>().value)
+        }
+    }
 
     @Test
-    fun homeScreen_displaysCorrectCocktail() {
-        // Arrange
-        val fakeRepository:CocktailRepository = mock()
-        val viewModel = FakeHomeScreenViewModel(fakeRepository)
-        val cocktail = Cocktail(idDrink = "1", strDrink = "Test Cocktail", strDrinkThumb = "url")
-        viewModel._state.value = HomeScreenState(suggestionCocktail = cocktail, isLoading = false)
-
-        // Act
-        rule.setContent {
-            HomeScreen(viewModel = viewModel, navigateTo = { /* mock navigation function */ })
-        }
-
-        // Assert
-        rule.onNodeWithText("Test Cocktail").assertExists()
+    fun whenLoading_showLoadingIndicator() {
+        composeTestRule.onNodeWithTag("LoadingIndicator").assertIsDisplayed()
     }
 }
