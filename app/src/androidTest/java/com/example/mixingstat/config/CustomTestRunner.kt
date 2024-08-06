@@ -1,4 +1,4 @@
-package com.example.mixingstat.screen
+package com.example.mixingstat.config
 
 import android.app.Application
 import android.content.Context

@@ -16,7 +16,7 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-        testInstrumentationRunner = "com.example.mixingstat.screen.CustomTestRunner"
+        testInstrumentationRunner = "com.example.mixingstat.config.CustomTestRunner"
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
