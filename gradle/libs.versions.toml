@@ -28,8 +28,7 @@ activity = "1.9.1"
 gradle-versions = "0.51.0"
 materialIconsExtended = "1.7.0-beta06"
 ksp = "2.0.0-1.0.24"
-mockitoAndroid = "5.12.0"
-mockitoAndroidVersion = "5.12.0"
+mockkAndroid = "1.13.12"
 monitor = "1.7.1"
 navigationRuntime = "2.7.7"
 retrofit = "2.9.0"
@@ -52,6 +51,7 @@ androidxTest = "1.6.1"
 androidxTestExtJunit = "1.2.1"
 testRunner = "1.6.1"
 runner = "1.6.1"
+uiToolingVersion = "1.7.0-beta06"
 uiUnit = "1.6.8"
 
 [libraries]
@@ -59,6 +59,7 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 androidx-animation = { module = "androidx.compose.animation:animation", version.ref = "animation" }
 androidx-animation-core = { module = "androidx.compose.animation:animation-core", version.ref = "animation" }
 androidx-annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
+androidx-core-ktx = { module = "androidx.test:core-ktx", version.ref = "core" }
 androidx-core-v140 = { module = "androidx.test:core", version.ref = "core" }
 androidx-espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCore" }
 androidx-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "foundation" }
@@ -89,6 +90,7 @@ androidx-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", versi
 androidx-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 androidx-ui-text = { module = "androidx.compose.ui:ui-text", version.ref = "uiText" }
 androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "uiToolingPreviewAndroid" }
+androidx-ui-tooling-v170beta06 = { module = "androidx.compose.ui:ui-tooling", version.ref = "uiToolingVersion" }
 androidx-ui-unit = { module = "androidx.compose.ui:ui-unit", version.ref = "uiUnit" }
 coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 coil-compose-base = { module = "io.coil-kt:coil-compose-base", version.ref = "coilComposeBase" }
@@ -113,6 +115,7 @@ androidx-material3-android = { group = "androidx.compose.material3", name = "mat
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
+mockk-android = { module = "io.mockk:mockk-android", version.ref = "mockkAndroid" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-test-junit4-android", version.ref = "uiTestJunit4Android" }
 androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test" }
