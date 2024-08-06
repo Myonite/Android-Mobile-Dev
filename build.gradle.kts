@@ -8,4 +8,5 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.compose) apply false
     id("com.autonomousapps.dependency-analysis") version "1.33.0"
+    id("org.jetbrains.dokka") version "1.9.20"
 }
