@@ -1,4 +1,4 @@
-package com.example.mixingstat.screen
+package com.example.mixingstat.screen.home
 
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
