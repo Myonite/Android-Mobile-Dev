@@ -106,8 +106,8 @@ class HomeScreenTest {
     fun whenNoCocktails_showErrorMessage() {
         stateFlow.value = HomeScreenState(
             isLoading = false,
-            popularCocktails = null,
-            latestCocktails = null,
+            popularCocktails = emptyList(),
+            latestCocktails = emptyList(),
             suggestionCocktail = null
         )
         composeTestRule.waitForIdle()
