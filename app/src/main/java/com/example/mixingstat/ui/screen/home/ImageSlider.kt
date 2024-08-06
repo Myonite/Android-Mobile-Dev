@@ -16,6 +16,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -34,7 +36,7 @@ fun ImageSlider(
             stringResource(R.string.possible_network_error),
             style = MaterialTheme.typography.titleLarge,
             textAlign = TextAlign.Center,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth().semantics { testTag = "ErrorMessage" }
         )
     } else {
         Column {
@@ -55,7 +57,7 @@ fun ImageSlider(
                         }
                     ) {
                         Card(
-                            modifier = Modifier.padding(8.dp),
+                            modifier = Modifier.padding(8.dp).semantics { testTag = "CocktailCard${cocktail.idDrink}" },
                             elevation = CardDefaults.cardElevation(4.dp)
                         ) {
                             Box(
