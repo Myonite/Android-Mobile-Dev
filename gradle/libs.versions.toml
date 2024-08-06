@@ -113,8 +113,6 @@ androidx-material3-android = { group = "androidx.compose.material3", name = "mat
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
 androidx-ui-tooling-preview-android = { group = "androidx.compose.ui", name = "ui-tooling-preview-android", version.ref = "uiToolingPreviewAndroid" }
 androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "uiTooling" }
-mockito-android = { module = "org.mockito:mockito-android", version.ref = "mockitoAndroidVersion" }
-mockito-android-v3124 = { module = "org.mockito:mockito-android", version.ref = "mockitoAndroid" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 androidx-ui-test-junit4-android = { group = "androidx.compose.ui", name = "ui-test-junit4-android", version.ref = "uiTestJunit4Android" }
 androidx-compose-ui-test = { module = "androidx.compose.ui:ui-test" }
