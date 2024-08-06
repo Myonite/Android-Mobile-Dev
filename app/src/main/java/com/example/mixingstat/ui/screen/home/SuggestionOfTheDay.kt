@@ -15,6 +15,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -39,7 +41,7 @@ fun SuggestionOfTheDay(cocktail: Cocktail, navigateTo: (route: String) -> Unit) 
         modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .clickable { navigateTo("cocktail/${cocktail.idDrink}") },
+            .clickable { navigateTo("cocktail/${cocktail.idDrink}") }.semantics { testTag = "SuggestionCard${cocktail.idDrink}" },
         elevation = CardDefaults.cardElevation(4.dp)
     ) {
         Row(
