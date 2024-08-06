@@ -26,9 +26,9 @@ class SearchViewModel @Inject constructor(private val repository: CocktailReposi
     fun performSearch() {
         viewModelScope.launch {
             val formattedQuery = query.value?.replace(" ", "_") ?: ""
-            val searchMethod = method.value
+            val searchMethod = method.value?.lowercase()
             Log.i("searchMethod",searchMethod!!)
-            when (method.value) {
+            when (searchMethod) {
                 "cocktail" -> {
                     if (formattedQuery.length == 1) {
                         val response = repository.searchCocktailsByFirstLetter(formattedQuery.first())

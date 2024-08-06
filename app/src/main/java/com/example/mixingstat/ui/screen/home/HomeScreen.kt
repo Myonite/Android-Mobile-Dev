@@ -5,6 +5,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -25,11 +27,14 @@ fun HomeScreen(
     viewModel: HomeScreenViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
+    val scrollState = rememberScrollState()
 
     if (state.isLoading) {
-        CircularProgressIndicator()
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
     } else {
-        if (state.popularCocktails.isEmpty() && state.latestCocktails.isEmpty() && state.suggestionCocktail == null) {
+        if (state.popularCocktails?.isEmpty() == true && state.latestCocktails?.isEmpty() == true && state.suggestionCocktail == null) {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 Text(
                     stringResource(R.string.possible_network_error),
@@ -43,17 +48,22 @@ fun HomeScreen(
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
+                        .verticalScroll(scrollState)
                 ) {
-                    ImageSlider(
-                        state.popularCocktails,
-                        navigateTo,
-                        text = stringResource(R.string.title_popular_cocktails)
-                    )
-                    ImageSlider(
-                        state.latestCocktails,
-                        navigateTo,
-                        text = stringResource(R.string.title_latest_cocktails)
-                    )
+                    state.popularCocktails?.let { cocktails ->
+                        ImageSlider(
+                            cocktails,
+                            navigateTo,
+                            text = stringResource(R.string.title_popular_cocktails)
+                        )
+                    }
+                    state.latestCocktails?.let { cocktails ->
+                        ImageSlider(
+                            cocktails,
+                            navigateTo,
+                            text = stringResource(R.string.title_latest_cocktails)
+                        )
+                    }
                     state.suggestionCocktail?.let { SuggestionOfTheDay(it, navigateTo) }
                 }
             }

@@ -12,11 +12,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeScreenViewModel @Inject constructor(
+open class  HomeScreenViewModel @Inject constructor(
     private val repository: CocktailRepository
 ) : ViewModel() {
     private val _state = MutableStateFlow(HomeScreenState())
-    val state: StateFlow<HomeScreenState> = _state
+    open val state: StateFlow<HomeScreenState> = _state
 
     init {
         loadCocktails()

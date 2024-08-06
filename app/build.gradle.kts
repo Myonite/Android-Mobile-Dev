@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.cfg.pseudocode.and
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -49,6 +51,13 @@ android {
 
 
 dependencies {
+    implementation(libs.androidx.ui.test.junit4.android)
+    testImplementation(libs.mockito.mockito.core)
+    androidTestImplementation(libs.mockito.mockito.core)
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.kotlin)
+    androidTestImplementation(libs.mockito.kotlin)
     ksp(libs.androidx.room.compiler)
     implementation(libs.hilt.android)
     implementation(libs.androidx.runtime.livedata)
@@ -71,12 +80,12 @@ dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.navigation.compose)
+    testImplementation(libs.mockito.mockito.android)
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.firebase.crashlytics.buildtools)
     testImplementation(libs.junit)
+    androidTestImplementation(libs.mockito.android)
     androidTestImplementation(libs.androidx.ui.test.junit4)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 }
