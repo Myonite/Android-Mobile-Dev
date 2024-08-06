@@ -44,6 +44,17 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    packaging {
+        resources.excludes.addAll(
+            listOf(
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md",
+            )
+        )
+        jniLibs {
+            useLegacyPackaging = true
+        }
+    }
 }
 
 
@@ -61,6 +72,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4.android)
     androidTestImplementation(libs.hilt.android.testing.v244)
     androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.mockk.android)
     androidTestImplementation(libs.androidx.test.runner)
     debugImplementation(libs.androidx.ui.tooling)
     debugRuntimeOnly(libs.androidx.ui.test.manifest)
@@ -98,10 +110,12 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview.android)
     implementation(libs.androidx.ui.unit)
     implementation(libs.coil.compose)
+    implementation(libs.androidx.ui.tooling.v170beta06)
     implementation(libs.coil.compose.base)
     implementation(libs.converter.gson)
     implementation(libs.dagger)
     implementation(libs.gson)
+    implementation(libs.androidx.core.ktx)
     implementation(libs.hilt.android)
     implementation(libs.hilt.core)
     implementation(libs.javax.inject)
@@ -114,4 +128,5 @@ dependencies {
     ksp(libs.hilt.compiler)
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
+
 }
