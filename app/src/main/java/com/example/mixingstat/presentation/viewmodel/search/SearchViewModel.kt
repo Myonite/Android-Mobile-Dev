@@ -24,8 +24,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SearchViewModel @Inject constructor(private val repository: CocktailRepository) :
     ViewModel() {
-    val query = MutableLiveData<String>()
-    val method = MutableLiveData<String>()
+    val query: MutableLiveData<String> = MutableLiveData("")
+    val method: MutableLiveData<String> = MutableLiveData("")
     private val _searchResults = MutableStateFlow<List<Cocktail>>(emptyList())
     val searchResults: StateFlow<List<Cocktail>> = _searchResults
 

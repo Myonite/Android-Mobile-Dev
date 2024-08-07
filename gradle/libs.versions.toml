@@ -1,6 +1,6 @@
 [versions]
 activityCompose = "1.9.1"
-agp = "8.4.2"
+agp = "8.2.2"
 animation = "1.6.8"
 annotation = "1.8.1"
 coilCompose = "2.7.0"

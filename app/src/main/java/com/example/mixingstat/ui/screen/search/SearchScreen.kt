@@ -54,9 +54,10 @@ fun SearchScreen(
 ) {
     var text by rememberSaveable { mutableStateOf(searchQuery ?: "") }
     var dropdownOpen by remember { mutableStateOf(false) }
-    val queryState by viewModel.query.observeAsState()
-    val methodState by viewModel.method.observeAsState()
+    val queryState by viewModel.query.observeAsState("")
+    val methodState by viewModel.method.observeAsState("")
     val scrollState = rememberScrollState()
+
 
     val searchMethods = listOf(
         stringResource(R.string.cocktail),

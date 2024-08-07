@@ -28,6 +28,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -59,10 +61,9 @@ fun RandomDrinkScreen(
         animationSpec = tween(400), label = "random"
     )
 
-    LaunchedEffect(key1 = randomDrinkState.selectedCocktail) {
+    LaunchedEffect(Unit) {
         delay(1000)
-        targetAlpha = 0f
-        showCocktail = true
+        showCocktail = randomDrinkState.selectedCocktail != null
     }
 
     Box(
@@ -81,7 +82,8 @@ fun RandomDrinkScreen(
                             rotationZ = angle,
                             alpha = alpha
                         )
-                        .size(200.dp),
+                        .size(200.dp)
+                        .semantics { testTag = "QuestionIcon" },
                     tint = MaterialTheme.colorScheme.primaryContainer
                 )
             }

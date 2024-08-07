@@ -50,7 +50,7 @@ open class  HomeScreenViewModel @Inject constructor(
     /**
      * Loads cocktails from the repository and updates the state.
      */
-    private fun loadCocktails() {
+    fun loadCocktails() {
         viewModelScope.launch {
             _state.value = HomeScreenState(isLoading = true)
             val popularCocktails = repository.getAllPopularCocktails()
