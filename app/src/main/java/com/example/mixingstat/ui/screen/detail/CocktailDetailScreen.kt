@@ -12,7 +12,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.mixingstat.R
 import com.example.mixingstat.presentation.viewmodel.CocktailDetailViewModel
-import com.example.mixingstat.ui.screen.detail.CocktailDetail
 
 /**
  * Composable function that displays the CocktailDetail screen.

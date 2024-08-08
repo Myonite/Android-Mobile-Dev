@@ -63,7 +63,7 @@ fun RandomDrinkScreen(
             repeatMode = RepeatMode.Reverse
         ), label = "random"
     )
-    var targetAlpha by remember { mutableFloatStateOf(1f) }
+    val targetAlpha by remember { mutableFloatStateOf(1f) }
     var showCocktail by remember { mutableStateOf(false) }
     val alpha by animateFloatAsState(
         targetValue = targetAlpha,
