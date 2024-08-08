@@ -13,6 +13,15 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.mixingstat.config.botNavScreenList
 
+/**
+ * Composable function that displays a bottom navigation bar.
+ *
+ * This function displays a bottom navigation bar with items for each screen in the botNavScreenList.
+ * Each item has an icon and a label, and is selected if its route matches the current destination's route.
+ * When an item is clicked, the function navigates to the corresponding screen and saves the state.
+ *
+ * @param navController The NavController that controls the navigation between screens.
+ */
 @Composable
 fun BottomNavigationBar(navController: NavController) {
     NavigationBar {

@@ -10,6 +10,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for the CocktailDetail screen.
+ *
+ * @property repository The repository to fetch cocktails from.
+ * @property _state The MutableStateFlow representing the state of the CocktailDetail screen.
+ * @property state The StateFlow representing the state of the CocktailDetail screen.
+ */
 @HiltViewModel
 class CocktailDetailViewModel @Inject constructor(
     private val repository: CocktailRepository
@@ -17,6 +24,11 @@ class CocktailDetailViewModel @Inject constructor(
     private val _state = MutableStateFlow(CocktailDetailState())
     val state: StateFlow<CocktailDetailState> = _state
 
+    /**
+     * Searches for a cocktail by its ID and updates the state.
+     *
+     * @param id The ID of the cocktail to search for.
+     */
     fun searchById(id: String) {
         viewModelScope.launch {
             val cocktail = repository.getCocktail(id)

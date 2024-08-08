@@ -24,6 +24,18 @@ import coil.compose.AsyncImage
 import com.example.mixingstat.R
 import com.example.mixingstat.data.models.Cocktail
 
+/**
+ * Composable function that displays a list of cocktails in a horizontal slider.
+ *
+ * This function creates a LazyRow layout and displays each cocktail in a Card.
+ * Each Card contains an image of the cocktail and is clickable, navigating to the detail screen of the cocktail when clicked.
+ * If the list of cocktails is empty, it displays an error message.
+ *
+ * @param cocktails The list of cocktails to be displayed in the slider.
+ * @param navigateTo A function that takes a route as a parameter and navigates to the corresponding screen.
+ * @param modifier The modifier to be applied to the LazyRow layout.
+ * @param text The title to be displayed above the slider. If null, no title is displayed.
+ */
 @Composable
 fun ImageSlider(
     cocktails: List<Cocktail>,

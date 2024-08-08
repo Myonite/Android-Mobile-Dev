@@ -27,6 +27,12 @@ import com.example.mixingstat.presentation.viewmodel.home.HomeScreenViewModel
 /**
  * HomeScreen is a Composable function that displays the home screen of the application.
  *
+ * This function displays a loading indicator when the state is loading.
+ * If the state is not loading, it checks if the popular cocktails, latest cocktails, and suggestion cocktail are all empty.
+ * If they are all empty, it displays an error message.
+ * If not, it displays a Row layout with a Column layout inside it.
+ * The Column layout contains ImageSlider components for the popular cocktails and latest cocktails, and a SuggestionOfTheDay component for the suggestion cocktail.
+ *
  * @param navigateTo A function that takes a route as a parameter and navigates to the corresponding screen.
  * @param viewModel The ViewModel that provides the state for the HomeScreen. By default, it uses the HomeScreenViewModel provided by Hilt.
  */

@@ -12,6 +12,14 @@ import androidx.compose.ui.unit.dp
 import com.example.mixingstat.R
 import com.example.mixingstat.data.models.Cocktail
 
+/**
+ * Composable function that displays the details of a cocktail.
+ *
+ * This function creates a Column layout and displays the category, glass type, and alcoholic content of the cocktail.
+ * Each detail is displayed in a Row layout with the label on the left and the value on the right.
+ *
+ * @param cocktail The cocktail whose details are to be displayed.
+ */
 @Composable
 fun DetailsSection(cocktail: Cocktail) {
     Column(modifier = Modifier.padding(top = 20.dp)) {

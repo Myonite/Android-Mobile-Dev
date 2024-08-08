@@ -18,6 +18,16 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.mixingstat.data.models.Cocktail
 
+/**
+ * Composable function that displays a random drink screen.
+ *
+ * This function displays a question mark icon that rotates back and forth while the random drink is being loaded.
+ * Once the random drink is loaded, it displays the details of the drink using the CocktailDetailScreen composable.
+ * If the random drink cannot be loaded, it displays an error message.
+ *
+ * @param navigateTo A function that takes a route as a parameter and navigates to the corresponding screen.
+ * @param viewModel The ViewModel that provides the state for the RandomDrinkScreen. By default, it uses the RandomDrinkViewModel provided by Hilt.
+ */
 @Composable
 fun SearchResults(searchResults: List<Cocktail>?, navigateTo: (route: String) -> Unit) {
     if (searchResults.isNullOrEmpty()) {

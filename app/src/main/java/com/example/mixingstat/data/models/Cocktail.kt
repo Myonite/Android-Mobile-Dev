@@ -5,6 +5,63 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Represents a Cocktail entity in the database.
+ *
+ * @property idDrink The unique ID of the cocktail.
+ * @property strDrink The name of the cocktail.
+ * @property strDrinkAlternate The alternate name of the cocktail.
+ * @property strTags The tags associated with the cocktail.
+ * @property strVideo The URL of the video showing how to make the cocktail.
+ * @property strCategory The category of the cocktail.
+ * @property strIBA The International Bartenders Association (IBA) rating of the cocktail.
+ * @property strAlcoholic Whether the cocktail is alcoholic or not.
+ * @property strGlass The type of glass used for the cocktail.
+ * @property strInstructions The instructions to make the cocktail.
+ * @property strInstructionsES The instructions to make the cocktail in Spanish.
+ * @property strInstructionsDE The instructions to make the cocktail in German.
+ * @property strInstructionsFR The instructions to make the cocktail in French.
+ * @property strInstructionsIT The instructions to make the cocktail in Italian.
+ * @property strInstructionsZH_HANS The instructions to make the cocktail in Simplified Chinese.
+ * @property strInstructionsZH_HANT The instructions to make the cocktail in Traditional Chinese.
+ * @property strDrinkThumb The URL of the thumbnail image of the cocktail.
+ * @property strIngredient1 The first ingredient of the cocktail.
+ * @property strIngredient2 The second ingredient of the cocktail.
+ * @property strIngredient3 The third ingredient of the cocktail.
+ * @property strIngredient4 The fourth ingredient of the cocktail.
+ * @property strIngredient5 The fifth ingredient of the cocktail.
+ * @property strIngredient6 The sixth ingredient of the cocktail.
+ * @property strIngredient7 The seventh ingredient of the cocktail.
+ * @property strIngredient8 The eighth ingredient of the cocktail.
+ * @property strIngredient9 The ninth ingredient of the cocktail.
+ * @property strIngredient10 The tenth ingredient of the cocktail.
+ * @property strIngredient11 The eleventh ingredient of the cocktail.
+ * @property strIngredient12 The twelfth ingredient of the cocktail.
+ * @property strIngredient13 The thirteenth ingredient of the cocktail.
+ * @property strIngredient14 The fourteenth ingredient of the cocktail.
+ * @property strIngredient15 The fifteenth ingredient of the cocktail.
+ * @property strMeasure1 The measure for the first ingredient of the cocktail.
+ * @property strMeasure2 The measure for the second ingredient of the cocktail.
+ * @property strMeasure3 The measure for the third ingredient of the cocktail.
+ * @property strMeasure4 The measure for the fourth ingredient of the cocktail.
+ * @property strMeasure5 The measure for the fifth ingredient of the cocktail.
+ * @property strMeasure6 The measure for the sixth ingredient of the cocktail.
+ * @property strMeasure7 The measure for the seventh ingredient of the cocktail.
+ * @property strMeasure8 The measure for the eighth ingredient of the cocktail.
+ * @property strMeasure9 The measure for the ninth ingredient of the cocktail.
+ * @property strMeasure10 The measure for the tenth ingredient of the cocktail.
+ * @property strMeasure11 The measure for the eleventh ingredient of the cocktail.
+ * @property strMeasure12 The measure for the twelfth ingredient of the cocktail.
+ * @property strMeasure13 The measure for the thirteenth ingredient of the cocktail.
+ * @property strMeasure14 The measure for the fourteenth ingredient of the cocktail.
+ * @property strMeasure15 The measure for the fifteenth ingredient of the cocktail.
+ * @property strImageSource The source of the image of the cocktail.
+ * @property strImageAttribution The attribution for the image of the cocktail.
+ * @property strCreativeCommonsConfirmed Whether the image of the cocktail is licensed under Creative Commons.
+ * @property dateModified The date when the cocktail was last modified.
+ * @property isPopular Whether the cocktail is popular or not.
+ * @property isLatest Whether the cocktail is the latest or not.
+ */
 @Entity(tableName = "cocktail")
 data class Cocktail(
     @PrimaryKey @SerializedName("idDrink")  val idDrink: String,
@@ -62,6 +119,13 @@ data class Cocktail(
     @ColumnInfo(defaultValue = "0") var isLatest: Boolean = false
 
 ){
+
+    /**
+     * Returns a list of pairs of ingredients and their measures for the cocktail.
+     *
+     * @param cocktail The cocktail for which to get the ingredients and measures.
+     * @return A list of pairs of ingredients and their measures.
+     */
     fun getIngredientsWithMeasures(cocktail: Cocktail): List<Pair<String?, String?>> {
         return listOf(
             Pair(cocktail.strIngredient1, cocktail.strMeasure1),

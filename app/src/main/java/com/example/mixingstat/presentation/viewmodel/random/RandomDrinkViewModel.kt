@@ -11,6 +11,13 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * ViewModel for the RandomDrink screen.
+ *
+ * @property repository The repository to fetch cocktails from.
+ * @property _randomDrinkState The MutableStateFlow representing the state of the RandomDrink screen.
+ * @property randomDrinkState The StateFlow representing the state of the RandomDrink screen.
+ */
 @HiltViewModel
 class RandomDrinkViewModel @Inject constructor(
     private val repository: CocktailRepository
@@ -23,6 +30,9 @@ class RandomDrinkViewModel @Inject constructor(
         observeNetworkStatus()
     }
 
+    /**
+     * Observes the network status and selects a random cocktail when connected.
+     */
     private fun observeNetworkStatus() {
         viewModelScope.launch {
             NetworkStatus.isConnected.collect { isConnected ->
@@ -33,6 +43,9 @@ class RandomDrinkViewModel @Inject constructor(
         }
     }
 
+    /**
+     * Selects a random cocktail from the repository and updates the state.
+     */
     private fun selectRandomCocktail() {
         viewModelScope.launch {
             val selectedCocktail = repository.getRandomCocktail()
